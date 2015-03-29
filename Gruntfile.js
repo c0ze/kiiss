@@ -49,6 +49,10 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:dist']
       },
+      slim: {
+        files: ['assets/{,*/}*.{slim}'],
+        tasks: ['newer:slim:dist']
+      },
       coffeeTest: {
         files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:test', 'karma']
@@ -432,6 +436,7 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
+        'slim',
         'coffee:dist',
         'compass:server'
       ],
