@@ -1,1 +1,31 @@
-p This is the rss view.
+.container
+  form.form-horizontal ng-submit="addFeed()"
+    h2.form-heading Enter new RSS feed
+    .form-group
+      label.control-label.col-xs-2 for="inputName"  Name
+      .col-xs-10
+        input#inputName.form-control placeholder="Name" type="text" ng-model="name"
+    .form-group
+      label.control-label.col-xs-2 for="inputURL"  URL
+      .col-xs-10
+        input#inputURL.form-control placeholder="URL" type="url" ng-model="url"
+    .form-group
+      .col-xs-offset-2.col-xs-10
+        button.btn.btn-primary type="submit"  Save!
+  .input-prepend.span12
+    .btn-group
+      button.btn.btn-info.ng-binding tabindex="-1" type="button"  {{ loadButtonText }}
+      button.btn.btn-info.dropdown-toggle data-toggle="dropdown" tabindex="-1"
+        span.caret
+      ul.dropdown-menu
+        li ng-repeat="feed in feeds"
+          div ng-click="loadFeed(feed)" {{ feed.get("name") }}
+    input.span10.ng-pristine.ng-valid autocomplete="off" data-ng-model="feedSrc" placeholder=("Enter Feed URL") type="text" /
+  .row-fluid
+    ul.unstyled
+      span.badge.badge-warning ng-show=("feed_source.length > 0")  30 Items
+      li ng-repeat=("feed in feed_source | filter:filterText")
+        h5
+          a href="{{ feed.link }}" target="_blank" {{ feed.title }}
+        p.text-left ng-bind="feed.contentSnippet"
+        span.small
