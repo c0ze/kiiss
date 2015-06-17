@@ -2,7 +2,7 @@
 ---
 
 KiissApp = angular.module('kiiss')
-KiissApp.controller 'LoginCtrl', ['$scope', ($scope) ->
+KiissApp.controller 'LoginCtrl', ['$scope', '$rootScope', ($scope, $rootScope) ->
 
   $scope.login = () ->
     console.log "login called with " + $scope.useremail + $scope.password
@@ -10,8 +10,8 @@ KiissApp.controller 'LoginCtrl', ['$scope', ($scope) ->
       success: (theUser) ->
         console.log "User successfully authenticated!"
         $scope.user = theUser
-        $scope.$parent.$hide()
         $scope.$apply()
+        $rootScope.$emit 'login'
       failure: (theUser, errorString) ->
         console.log "Error while authenticating: " + errorString
         if (errorString.indexOf('invalid_grant') > -1)

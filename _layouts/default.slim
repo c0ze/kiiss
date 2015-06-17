@@ -45,14 +45,7 @@ body ng-app="kiiss" ng-controller="MainCtrl"
       {{ site.description }}
 
     nav.module.main-menu.color-4
-      a href="{{ site.url }}/" Home
-      a href="{{ site.url }}/research/" Research
-
-    .module.color-3
-      div
-        button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal" Click to toggle modal
-          br
-          small (using an object)
+      a ng-click="addFeed()" + Add Feed
 
     .module.links.color-3
       a href="https://github.com/{{ site.github }}" title="Profile in Github" target="_blank" github
@@ -62,6 +55,8 @@ body ng-app="kiiss" ng-controller="MainCtrl"
 
   script src="js/main_controller.js"
   script src="js/login_controller.js"
+  script src="js/rss.js"
+  script src="js/add_controller.js"
 
   {{ content }}
 

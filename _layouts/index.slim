@@ -3,7 +3,6 @@ layout: default
 ---
 
 .main-content
-  article.module color-3
-    h1 {{ page.title }}
-    hr
-      {{ content }}
+  article.module color-3 ng-repeat="feed in feeds"
+    h1 ng-bind="feed.get('name')"
+    hr ng-bind="feed.get('url')"
