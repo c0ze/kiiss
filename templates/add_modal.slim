@@ -1,0 +1,18 @@
+---
+---
+
+.modal tabindex="-1" role="dialog"
+  .modal-dialog
+    .modal-content ng-controller="AddCtrl"
+      .modal-header.text-center ng-show="title"
+        button.close type="button" ng-click="$hide()" &times;
+        h4.modal-title ng-bind-html="title"
+      .modal-body
+        form.form-signin
+          h2.form-signin-heading Add Feed
+          label.sr-only for="inputUrl" Feed URL
+          input.form-control#inputUrl placeholder="Feed Url" required="true" ng-model="feedUrl" type="url"
+
+      .modal-footer
+        button.btn.btn-lg.btn-primary.btn-block ng-click="addFeed()" type="submit" Add
+
