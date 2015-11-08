@@ -1,18 +1,18 @@
 ---
 ---
 
-KiissApp = angular.module('kiiss', ['ngAnimate', 'mgcrea.ngStrap'])
-KiissApp.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', 'RssService'
-  ($scope, $rootScope, $modal, RssService) ->
+KiissApp = angular.module('kiiss', ['ngAnimate', 'ngCookies', 'mgcrea.ngStrap'])
+KiissApp.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$cookies', 'RssService'
+  ($scope, $rootScope, $modal, $cookies, RssService) ->
 
     Kii.initializeWithSite "79255555", "6aa6ef92c2cd9d1f9a00e330f6b93e4e", KiiSite.US
+    COOKIE_KEY = "KIISSTOKEN"
 
     $rootScope.$on "login", ->
       console.log "got the login event"
-      $scope.loginModal.$scope.$hide()
-      $scope.user = Kii.getCurrentUser()
-      $scope.active_feed = {}
-      $scope.reloadFeeds()
+      user = Kii.getCurrentUser()
+      $cookies[COOKIE_KEY] = user.getAccessToken()
+      $scope.login(user)
 
     $rootScope.$on "added", ->
       $scope.addModal.$scope.$hide()
@@ -40,6 +40,21 @@ KiissApp.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', 'RssService'
     $scope.reloadFeeds = ->
       RssService.getFeeds($scope.user).then (feeds) ->
         $scope.feeds = feeds
+
+    $scope.login = (user) ->
+      $scope.loginModal.$scope.$hide()
+      $scope.user = user
+      $scope.active_feed = {}
+      $scope.reloadFeeds()
+
+    if $cookies[COOKIE_KEY]
+      KiiUser.authenticateWithToken($cookies[COOKIE_KEY],
+        success: (user) ->
+          $scope.login(user)
+        failure: (user, anErrorString) ->
+          $scope.errorMessage = "Invalid Token"
+          $scope.messageClass = "alert alert-danger"
+      )
 
     unless Kii.loggedIn()
       $scope.loginModal.$scope.$show()
