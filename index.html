@@ -7,6 +7,9 @@ layout: default
   <article class="module color-3" ng-repeat="feed in feeds">
     <h1 ng-bind="feed.get('name')"></h1>
     <hr ng-bind="feed.get('url')"></hr>
+    <button class="btn btn-danger pull-right" type="submit" ng-click="delete(feed)">
+      <span class="glyphicon-trash glyphicon glyphicon-white"> Delete</span>
+    </button>
   </article>
 
 

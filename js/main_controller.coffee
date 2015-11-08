@@ -37,6 +37,11 @@ KiissApp.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$cookies', '
       console.log "Add feed called."
       $scope.addModal.$scope.$show()
 
+    $scope.delete = (feed) ->
+      feed.delete
+        success: ->
+          $scope.reloadFeeds()
+
     $scope.reloadFeeds = ->
       RssService.getFeeds($scope.user).then (feeds) ->
         $scope.feeds = feeds
