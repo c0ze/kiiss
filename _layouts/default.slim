@@ -51,7 +51,14 @@ html lang="en"
         {{ site.description }}
 
       .module.description.color-2
-        a href="about" title="About this project" target="_blank" About
+        a href="about" title="About this project" About
+
+      .module.description.color-4 ng-if="user"
+        | Logged in as 
+        span ng-bind="user.getEmailAddress()"
+
+      nav.module.main-menu.color-4
+        a ng-click="logOut()" Logout
 
       nav.module.main-menu.color-4
         a ng-click="addFeed()" + Add Feed

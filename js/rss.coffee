@@ -6,8 +6,6 @@ angular.module 'kiiss'
     ['$rootScope', '$location', '$http', '$q',
     ($rootScope, $location, $http, $q) ->
 
-      console.log "Rss controller called."
-
       @addFeed = (url) ->
         deferred = $q.defer()
         feed = @feeds_bucket.createObject()
