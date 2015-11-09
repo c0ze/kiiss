@@ -15,9 +15,8 @@ twitter: ardakaraduman
 github: c0ze
 google: 
 
-# RSS feed
-rss-feed-limit: 10
-rss-show-full: "no"
+# Google Analytics
+google_analytics_tracking_id: UA-56175514-4
 
 slim:
   pretty: true
