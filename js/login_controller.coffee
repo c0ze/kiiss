@@ -23,14 +23,16 @@ KiissApp.controller 'LoginCtrl', ['$scope', '$rootScope', ($scope, $rootScope) -
 
   $scope.register = () ->
     console.log "register called with " + $scope.useremail + $scope.password
-    user = KiiUser.userWithEmailAddress($scope.useremail, $scope.password);
+    username = $scope.useremail.replace /@/, ""
+    user = KiiUser.userWithEmailAddressAndUsername($scope.useremail, username, $scope.password);
+    console.log(user)
     user.register(
       success: (theUser) ->
         console.log("User registered!")
         console.log(theUser)
-        $scope.user = theUser
-        $scope.$apply()
-        $scope.$emit "login"
+#        $scope.user = theUser
+#        $scope.$apply()
+#        $scope.$emit "login"
       failure: (theUser, errorString) ->
         console.log "Error while registering: " + errorString
     )

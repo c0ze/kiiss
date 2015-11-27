@@ -1,0 +1,17 @@
+doctype html
+html lang="en"
+
+  {% include head.slim %}
+
+  body ng-app="kiiss" ng-controller="MainCtrl"
+    header#top.main-header
+      .module.title.color-1
+        h1
+          a href="{{ site.url }}/"
+            | {{ site.name }}
+
+    .main-content
+      article.module.color-3
+        h1 {{ page.title }}
+        hr
+        {{ content }}
