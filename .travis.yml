@@ -1,11 +1,16 @@
 language: ruby
 rvm: 2.1.4
+before_install:
+- sudo apt-get update
+- sudo apt-get install nodejs npm  nodejs-legacy
+- sudo npm install -g bower
 script: "bower install && bundle exec jekyll build && bundle exec rake s3"
 branches:
   only:
     - releases
 env:
   global:
-
+    - secure: "DCyodKfTE9P166meuTiO254yXvfso/g1oMbuMxw2IOAq/r4IYQgRMZyRkHxqgExrF1E6blADUweK+kx22UAuZjCusAG+c12Nrx+lZzwDwjpYDnp8qZ/IOYQWS4dpA7uJgvNIQxFmlSlf1RJrPSLxjyeAM3UEmU/F8Soqkm5IVo6zvcWImhN/DX6cR6y05ThNAqyD3//CrF080yinN/2JtETZCZN0Y6pufkF3mp6xGxPCCUqfBsYgYjremP2Ob9MGq/TsS4BpVm0COFBN6vzuBtx2/TB4cRo1GLJjwnytpOFq5Iy7ufCjWl6sZ7GXnye2cCKqT0K5lZz3uG4Oobv3AOswXQ+qTkhou5qvXWeQRywEOrTFzFXBUNLdRaAKpnruEJSCw+hWipY33/bzl4swkov1qyunVGYkTULpYrYYpmLoyr9GN5OUgo2DEYbLmxgafYxfzE2ey5FMgbuf6Z29wozJJUsW8k+A4klfbG8DMIcTsemtJuAOlF0XdA+V4hQSt5nO43dz+rdCsRmOVKii+8VVbxnbS1IOfqcwQR+0/Png/uujVdYxIe5fnZi7TjmhoOisssp6q9mwo2bwyfbCflHejsE+z2PyBJLCXy2LInAvSDScUHbHu0cBm+8eXLCkiZSdCrG90mD7fyFirpvtHFzf+B1ehd7Srx4/ZFSfs50="
+    - secure: "TTMArRO+lxaYu03TYk1IDbDFf4mex3bpiTxXMfjCJYQW9mpT7ugmuc1OZ9lKH0gBdnhBk7Y2al65NkXWrc18CCXuLVu5R5W6OY6kiQ4QBxcLQJr+8JHbX6k7wBl3IU7LAbpvZF/JP6wgVjiuCk3l5PORTztGv/P6kuI8iokN3OFYPAxRdRqpyxujuPO47T9Dob22SZrzEDrEaDv1adk+fQSp7nvMl7kMnxKMjWHpxkzeVxkQioHQVsBfM9mTgKdRpqK6z1lBcrpyzu3izYdlUUPjjmHahbzsY+g/wXyANRqtJJY3OJRYjby56b05cOzzMyfsA4o0y2V184aysDaThE8gvoHvu9CFnFQSHm71q5iD9xe9qJXa7AGy7JzJCovbNxH5kl/uTlHHrBcwPzpavaVEkJZdF1+gr1lUrwgq/7kt3tjlEOf3BmwHCvaiFIMuccaW3JjLYpt3S118PxmX0pa/5DLDePFNfqRbJIa7e9Fz/6/AmARjJGJkmpJ6UFl00pJ7Kk2fPKqElVXEQL2NKam65+hGPKHW76VmS3N588P9gY6Ra742W5LYRrvkblyEj7MjNU5tJnrPRlT0oMbNC4UpMWwibSpjvMXG/t1Z2r4zhTchDCwDzv4cJ0m+MT9WiP+NCuwDQaYMeKsLUuJfoOP6Ozw09ZCaBtXqVOSZqx4="
     - AWS_REGION="us-east-1"
     - AWS_BUCKET_NAME="kiiss.coze.org"
