@@ -9,6 +9,8 @@ highlighter: pygments
 paginate: 5
 permalink: /:title
 
+exclude: [vendor]
+
 # Social share and comments.
 disqus-id: 
 twitter: ardakaraduman

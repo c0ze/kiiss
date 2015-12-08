@@ -1,0 +1,11 @@
+language: ruby
+rvm: 2.1.4
+script: "bower install && bundle exec jekyll build && bundle exec rake s3"
+branches:
+  only:
+    - releases
+env:
+  global:
+
+    - AWS_REGION="us-east-1"
+    - AWS_BUCKET_NAME="kiiss.coze.org"
