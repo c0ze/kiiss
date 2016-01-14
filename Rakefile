@@ -3,6 +3,16 @@ require "dotenv"
 
 Dotenv.load
 
+desc "Build"
+task :build do
+  system("JEKYLL_ENV=#{ENV['JEKYLL_ENV']} jekyll build --config ./_config_#{ENV['JEKYLL_ENV']}.yml")
+end
+
+desc "Serve"
+task :serve do
+  system("JEKYLL_ENV=#{ENV['JEKYLL_ENV']} jekyll serve --config ./_config_#{ENV['JEKYLL_ENV']}.yml")
+end
+
 def traverse_directory(path)
   Dir.entries(path).map do |f|
     next if [".", ".."].include? f

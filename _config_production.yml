@@ -1,7 +1,7 @@
 # General
 name: KIISS
 description: "RSS Reader with Kii Backend"
-url: http://localhost:4000
+url: http://kiiss.coze.org
 
 markdown: redcarpet
 highlighter: pygments
@@ -9,11 +9,13 @@ highlighter: pygments
 paginate: 5
 permalink: /:title
 
+exclude: [vendor]
+
 # Social share and comments.
-disqus-id: 
+disqus-id:
 twitter: ardakaraduman
 github: c0ze
-google: 
+google:
 
 # Google Analytics
 google_analytics_tracking_id: UA-56175514-4
