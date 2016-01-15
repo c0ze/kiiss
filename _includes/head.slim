@@ -29,10 +29,13 @@
     script src="{{ site.url }}/bower_components/kii-cloud-sdk/KiiSDK.js"
     javascript:
       var app = angular.module('kiiss', ['ngAnimate', 'ngCookies', 'mgcrea.ngStrap']);
-    script src="{{ site.url }}/js/main_controller.js"
-    script src="{{ site.url }}/js/login_controller.js"
-    script src="{{ site.url }}/js/rss.js"
-    script src="{{ site.url }}/js/add_controller.js"
+    script src="{{ site.url }}/js/controllers/main_controller.js"
+    script src="{{ site.url }}/js/controllers/login_controller.js"
+    script src="{{ site.url }}/js/controllers/feed_controller.js"
+    script src="{{ site.url }}/js/controllers/add_controller.js"
+    script src="{{ site.url }}/js/services/rss_service.js"
+    script src="{{ site.url }}/js/services/user_service.js"
+
 
     {% include google_analytics.html %}
   /  coffee:

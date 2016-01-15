@@ -1,8 +1,7 @@
 ---
 ---
 
-angular.module 'kiiss'
-  .factory 'RssService',
+app.factory 'RssService',
     ['$rootScope', '$location', '$http', '$q',
     ($rootScope, $location, $http, $q) ->
 
