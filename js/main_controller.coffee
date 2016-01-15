@@ -1,8 +1,7 @@
 ---
 ---
 
-KiissApp = angular.module('kiiss', ['ngAnimate', 'ngCookies', 'mgcrea.ngStrap'])
-KiissApp.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$cookies', '$window', 'RssService'
+app.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$cookies', '$window', 'RssService'
   ($scope, $rootScope, $modal, $cookies, $window, RssService) ->
 
     Kii.initializeWithSite "79255555", "6aa6ef92c2cd9d1f9a00e330f6b93e4e", KiiSite.US
