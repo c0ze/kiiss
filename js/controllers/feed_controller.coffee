@@ -6,5 +6,5 @@ app.controller 'FeedCtrl', ['$scope',
 
     $scope.user = Kii.getCurrentUser()
 
-    console.log "Hello from Feed Controller ! #{$scope.user.username}"
+    console.log "Hello from Feed Controller ! #{$scope.user}"
 ]
