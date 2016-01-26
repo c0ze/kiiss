@@ -1,0 +1,10 @@
+---
+---
+
+article.module.color-3
+  a[href="/feed.html" ng-click="show()"]
+    h1[ng-bind="feed.get('name')"]
+  hr[ng-bind="feed.get('url')"]
+  button.btn.btn-danger.pull-right[type="submit" ng-click="delete()"]
+    span.glyphicon-trash.glyphicon.glyphicon-white
+      |  Delete

@@ -2,14 +2,8 @@
 layout: default
 ---
 
-section.main-content
-  article.module.color-3[ng-repeat="feed in feeds"]
-    a[ng-href="/feed.html?{{ feed.get('name') }}"]
-      h1[ng-bind="feed.get('name')"]
-    hr[ng-bind="feed.get('url')"]
-    button.btn.btn-danger.pull-right[type="submit" ng-click="delete(feed)"]
-      span.glyphicon-trash.glyphicon.glyphicon-white
-        |  Delete
+feeds
+section
   .module.pagination.color-3
     |  {% if paginator.previous_page %} 
     a.previous[href="{{ site.url }}{{ paginator.previous_page_path }}"]

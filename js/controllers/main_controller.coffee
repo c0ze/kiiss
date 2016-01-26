@@ -5,22 +5,16 @@ app.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$window', 'RssSer
   ($scope, $rootScope, $modal, $window, RssService, UserService) ->
 
     Kii.initializeWithSite "79255555", "6aa6ef92c2cd9d1f9a00e330f6b93e4e", KiiSite.US
+    $scope.rss = RssService
 
     $rootScope.$on "login", (e, user) ->
       unless e.defaultPrevented
-        e.preventDefault()
-        e.stopPropagation()
         $scope.user = user
         $scope.loginModal?.hide()
-        $scope.active_feed = {}
-        $scope.reloadFeeds()
-        $scope.$apply()
-
+        $scope.$broadcast "login"
 
     $rootScope.$on "failure", (e, message) ->
       unless e.defaultPrevented
-        e.preventDefault()
-        e.stopPropagation()
         $scope.loginModal ?=
           $modal
             title: "Please Login",
@@ -30,10 +24,8 @@ app.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$window', 'RssSer
 
     $rootScope.$on "added", (e) ->
       unless e.defaultPrevented
-        e.preventDefault()
-        e.stopPropagation()
         $scope.addModal?.hide()
-        $scope.reloadFeeds()
+        $scope.$broadcast "login"
 
     $scope.addFeed = ->
       $scope.addModal ?=
@@ -46,15 +38,6 @@ app.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$window', 'RssSer
     $scope.logOut = ->
       UserService.logout()
       $window.location.reload();
-
-    $scope.delete = (feed) ->
-      feed.delete
-        success: ->
-          $scope.reloadFeeds()
-
-    $scope.reloadFeeds = ->
-      RssService.getFeeds($scope.user).then (feeds) ->
-        $scope.feeds = feeds
 
     UserService.login()
 ]
