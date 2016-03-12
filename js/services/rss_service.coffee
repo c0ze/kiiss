@@ -41,15 +41,6 @@ app.factory 'RssService',
         @feeds_bucket.executeQuery(all_query, queryCallbacks)
         return deferred.promise
 
-      @loadFeed = (feed)->
-        @active_feed.url = feed.get("url")
-        @active_feed.name = feed.get("name")
-        @parseFeed($scope.active_feed.url).then( (res) ->
-          @loadButtonText = $scope.active_feed.name
-          console.log res
-          @feed_source = res.data.responseData.feed.entries
-        )
-
       @parseFeed = (url) ->
         return $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url))
 

@@ -4,12 +4,8 @@ layout: default
 ---
 
 .main-content[ng-controller="FeedCtrl"]
-  article.module.color-3
-    h1
-      | {{ page.title }}{{ .shortUrl }}
-    hr
-    | {{ content }}
-    p.top
-      small
-        a href="#top" [top]
+  article.module.color-3[ng-repeat="link in links"]
+    a[ng-href="{{link.link}}"]
+      h1[ng-bind="link.title"]
+    hr[ng-bind="link.contentSnippet"]
 

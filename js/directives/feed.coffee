@@ -1,19 +1,23 @@
 ---
 ---
 
-app.directive "feed", ["$rootScope", ($rootScope) ->
+app.directive "feed", [ () ->
   scope: true
   restrict: 'E'
   replace: 'true'
   templateUrl: '/templates/directives/feed.html'
-  link: (scope, elem, attrs) ->
-    scope.show = ->
-      $rootScope.$emit "load", scope.feed
+  controller: ($scope) ->
 
-    scope.delete =  ->
-      scope.feed.delete
+    $scope.data = {}
+    console.log $scope
+    $scope.$watch 'feed', ->
+      $scope.data.url = "/feed.html#?uuid=#{$scope.feed.getUUID()}"
+      $scope.$apply
+
+    $scope.delete =  ->
+      $scope.feed.delete
         success: ->
           console.log "deleted."
-          scope.reloadFeeds()
+          $scope.reloadFeeds()
 
 ]
