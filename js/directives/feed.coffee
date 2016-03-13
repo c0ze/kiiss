@@ -6,13 +6,15 @@ app.directive "feed", [ () ->
   restrict: 'E'
   replace: 'true'
   templateUrl: '/templates/directives/feed.html'
-  controller: ($scope) ->
+  controller: ($scope, $location) ->
 
-    $scope.data = {}
     console.log $scope
     $scope.$watch 'feed', ->
-      $scope.data.url = "/feed.html#?uuid=#{$scope.feed.getUUID()}"
+      $scope.url = "/feed.html#?uuid=#{$scope.feed.getUUID()}"
       $scope.$apply
+
+    $scope.goTo = ->
+      window.location = $scope.url
 
     $scope.delete =  ->
       $scope.feed.delete

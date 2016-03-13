@@ -1,14 +1,18 @@
 ---
 ---
 
-app.controller 'FeedCtrl', ['$scope', '$rootScope', '$location', 'UserService', 'RssService',
-  ($scope, $rootScope, $location, UserService, RssService) ->
+app.controller 'FeedCtrl', ['$scope', '$rootScope', '$location', '$sce', 'UserService', 'RssService',
+  ($scope, $rootScope, $location, $sce, UserService, RssService) ->
 
     UserService.login()
     $scope.activeFeed = {}
+    $scope.activeLink = 0
     console.log $scope.user
 
     uuid = $location.search().uuid
+
+    $scope.parseHtml = (html) ->
+       $sce.trustAsHtml(html)
 
     $rootScope.$on "login", (e, user) ->
       $scope.user = user
@@ -21,7 +25,9 @@ app.controller 'FeedCtrl', ['$scope', '$rootScope', '$location', 'UserService', 
           RssService.parseFeed($scope.activeFeed.url).then( (res) ->
             $scope.loadButtonText = $scope.activeFeed.name
             console.log res
+            $scope.activeFeed.description = res.data.responseData.feed.description
             $scope.links = res.data.responseData.feed.entries
+            $scope.$apply
           )
 
         failure: (obj) ->

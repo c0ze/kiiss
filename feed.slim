@@ -4,8 +4,17 @@ layout: default
 ---
 
 .main-content[ng-controller="FeedCtrl"]
-  article.module.color-3[ng-repeat="link in links"]
-    a[ng-href="{{link.link}}"]
-      h1[ng-bind="link.title"]
-    hr[ng-bind="link.contentSnippet"]
+  a[ng-href="{{activeFeed.url}}"]
+    h1[ng-bind="activeFeed.name"]
+  .content[ng-bind="activeFeed.description"]
+
+  .panel-group aria-multiselectable="true" bs-collapse="" ng-model="activeLink" role="tablist"
+    article.module.color-3 ng-repeat=("link in links")
+      .panel-heading.color-4 role="tab"
+        a[bs-collapse-toggle=""]
+          h1.panel-title[ng-bind="link.title"]
+        a[ng-href="{{link.link}}"]
+          hr[ng-bind="link.contentSnippet"]
+      .panel-collapse bs-collapse-target="" role="tabpanel"
+        .panel-body[ng-bind-html="parseHtml(link.content)"]
 

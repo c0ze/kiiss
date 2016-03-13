@@ -2,9 +2,9 @@
 ---
 
 article.module.color-3
-  a[ng-href="{{data.url}}"]
+  a[ng-click="goTo()"]
     h1[ng-bind="feed.get('name')"]
-  hr[ng-bind="data.url"]
+  hr[ng-bind="url"]
   button.btn.btn-danger.pull-right[type="submit" ng-click="delete()"]
     span.glyphicon-trash.glyphicon.glyphicon-white
       |  Delete
