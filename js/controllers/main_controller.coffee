@@ -1,10 +1,6 @@
 ---
 ---
 
-app.config( (localStorageServiceProvider) ->
-  localStorageServiceProvider.setPrefix('KIISS')
-)
-
 app.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$window', 'RssService', 'UserService',
   ($scope, $rootScope, $modal, $window, RssService, UserService) ->
 
