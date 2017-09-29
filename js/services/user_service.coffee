@@ -1,25 +1,26 @@
 ---
 ---
 
-app.factory 'UserService', ['$rootScope', '$cookies', ($rootScope, $cookies) ->
+app.factory 'UserService', ['$rootScope', 'localStorageService', ($rootScope, localStorageService) ->
 
   user = {}
   COOKIE_KEY = "KIISSTOKEN"
 
   handleLogin = (theUser) ->
-    $cookies[COOKIE_KEY] = theUser.getAccessToken()
+    localStorageService.set(COOKIE_KEY, theUser.getAccessToken())
     user = theUser
     $rootScope.$emit 'login', theUser
 
   @logout = () ->
-    $cookies[COOKIE_KEY] = ""
+    localStorageService.set(COOKIE_KEY, "")
     KiiUser.logOut()
     user = {}
 
 
   @login = (user) ->
-    if $cookies[COOKIE_KEY]
-      KiiUser.authenticateWithToken($cookies[COOKIE_KEY],
+    userKey = localStorageService.get(COOKIE_KEY)
+    if userKey
+      KiiUser.authenticateWithToken(userKey,
         success: (theUser) ->
           handleLogin(theUser)
         failure: (user, errorString) ->

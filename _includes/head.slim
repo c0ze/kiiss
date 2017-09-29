@@ -23,12 +23,12 @@
 
     script src="{{ site.url }}/bower_components/angular/angular.js"
     script src="{{ site.url }}/bower_components/angular-animate/angular-animate.js"
-    script src="{{ site.url }}/bower_components/angular-cookies/angular-cookies.js"
+    script src="{{ site.url }}/bower_components/angular-local-storage/dist/angular-local-storage.js"
     script src="{{ site.url }}/bower_components/angular-strap/dist/angular-strap.min.js"
     script src="{{ site.url }}/bower_components/angular-strap/dist/angular-strap.tpl.min.js"
-    script src="{{ site.url }}/bower_components/kii-cloud-sdk/KiiSDK.js"
+    script src="{{ site.url }}/bower_components/kii-storage/KiiSDK.js"
     javascript:
-      var app = angular.module('kiiss', ['ngAnimate', 'ngCookies', 'mgcrea.ngStrap']);
+      var app = angular.module('kiiss', ['ngAnimate', 'LocalStorageModule', 'mgcrea.ngStrap']);
     script src="{{ site.url }}/js/controllers/main_controller.js"
     script src="{{ site.url }}/js/controllers/login_controller.js"
     script src="{{ site.url }}/js/controllers/feed_controller.js"
