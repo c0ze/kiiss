@@ -19,12 +19,13 @@ app.controller 'FeedCtrl',
         success: (feed) ->
           $scope.activeFeed.url = feed.get("url")
           $scope.activeFeed.name = feed.get("name")
-          RssService.parseFeed($scope.activeFeed.url).then( (res) ->
+          RssService.parseFeed($scope.activeFeed.url).then( (feed) ->
+            console.log feed
             $scope.loadButtonText = $scope.activeFeed.name
-            console.log res
-            $scope.activeFeed.description = res.data.responseData.feed.description
-            $scope.links = res.data.responseData.feed.entries
-            $scope.$apply
+            console.log feed
+            $scope.activeFeed.description = feed.meta.description
+            $scope.links = feed.entries
+            $scope.$apply()
           )
 
         failure: (obj) ->
