@@ -8,13 +8,8 @@ app.directive "feed", [ () ->
   templateUrl: '/templates/directives/feed.html'
   controller: ($scope, $location) ->
 
-    console.log $scope
     $scope.$watch 'feed', ->
-      $scope.url = "/feed.html#?uuid=#{$scope.feed.getUUID()}"
-      $scope.$apply
-
-    $scope.goTo = ->
-      window.location = $scope.url
+      $scope.url = "/feed/#{$scope.feed.getUUID()}"
 
     $scope.delete =  ->
       $scope.feed.delete

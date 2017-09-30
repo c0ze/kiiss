@@ -1,5 +1,6 @@
   head
     meta charset="utf-8"
+    base href="/"
     title
       {% if page.title %} {{ page.title }}
       {% else %} {{ site.name }} &mdash; {{ site.description }}
@@ -23,12 +24,13 @@
 
     script src="{{ site.url }}/bower_components/angular/angular.js"
     script src="{{ site.url }}/bower_components/angular-animate/angular-animate.js"
+    script src="{{ site.url }}/bower_components/angular-route/angular-route.js"
     script src="{{ site.url }}/bower_components/angular-local-storage/dist/angular-local-storage.js"
     script src="{{ site.url }}/bower_components/angular-strap/dist/angular-strap.min.js"
     script src="{{ site.url }}/bower_components/angular-strap/dist/angular-strap.tpl.min.js"
     script src="{{ site.url }}/bower_components/kii-storage/KiiSDK.js"
     javascript:
-      var app = angular.module('kiiss', ['ngAnimate', 'LocalStorageModule', 'mgcrea.ngStrap']);
+      var app = angular.module('kiiss', ['ngAnimate', 'ngRoute', 'LocalStorageModule', 'mgcrea.ngStrap']);
     script src="{{ site.url }}/js/config.js"
     script src="{{ site.url }}/js/controllers/main_controller.js"
     script src="{{ site.url }}/js/controllers/login_controller.js"

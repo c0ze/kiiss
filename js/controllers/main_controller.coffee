@@ -18,7 +18,7 @@ app.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$window', 'RssSer
         $scope.loginModal ?=
           $modal
             title: "Please Login",
-            template: "/templates/login_modal.html",
+            templateUrl: "/templates/login_modal.html",
             controller: "LoginCtrl"
         $scope.loginModal?.show()
 
@@ -31,7 +31,7 @@ app.controller 'MainCtrl', ['$scope', '$rootScope', '$modal', '$window', 'RssSer
       $scope.addModal ?=
         $modal
           title: "Enter a URL",
-          template: "/templates/add_modal.html",
+          templateUrl: "/templates/add_modal.html",
           controller: "AddCtrl"
       $scope.addModal?.show()
 

@@ -1,23 +1,24 @@
 header#top.main-header
   .module.title.color-1
     h1
-      a href="{{ site.url }}/"
+      a[href="{{ site.url }}/"]
         | {{ site.name }}
 
   .module.description.color-2
-    {{ site.description }}
+    | {{ site.description }}
 
   .module.description.color-2
-    a href="about" title="About this project" About
+    a[href="{{ site.url }}/about" title="About this project"]
+      | About
 
   .module.description.color-4 ng-if="user"
     | Logged in as 
     span ng-bind="user.getEmailAddress()"
 
-  nav.module.main-menu.color-4
+  nav.module.main-menu.color-4 ng-if="user"
     a ng-click="logOut()" Logout
 
-  nav.module.main-menu.color-4
+  nav.module.main-menu.color-4 ng-if="user"
     a ng-click="addFeed()" + Add Feed
 
   .module.links.color-3

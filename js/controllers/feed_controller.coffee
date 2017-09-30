@@ -7,17 +7,13 @@ app.controller 'FeedCtrl', ['$scope', '$rootScope', '$location', '$sce', 'UserSe
     UserService.login()
     $scope.activeFeed = {}
     $scope.activeLink = 0
-    console.log $scope.user
 
-    uuid = $location.search().uuid
-
-    $scope.parseHtml = (html) ->
-       $sce.trustAsHtml(html)
+    $scope.feedId =  $routeParams.feedId
 
     $rootScope.$on "login", (e, user) ->
       $scope.user = user
       bucket = user.bucketWithName("feeds")
-      obj = KiiObject.objectWithID(bucket, uuid)
+      obj = KiiObject.objectWithID(bucket, $scope.feedId)
       obj.refresh(
         success: (feed) ->
           $scope.activeFeed.url = feed.get("url")
