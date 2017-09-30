@@ -5,7 +5,7 @@ before_install:
 - curl -sL https://deb.nodesource.com/setup | sudo bash -
 - sudo apt-get install nodejs
 - sudo npm install -g bower
-script: "bower install && bundle exec jekyll build && bundle exec rake s3"
+script: "bower install && bundle exec jekyll build --config _config_production.yml && bundle exec rake s3"
 branches:
   only:
     - releases
