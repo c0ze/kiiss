@@ -2,16 +2,14 @@
 ---
 
 app.controller 'FeedCtrl',
-  ['$scope', '$rootScope', '$routeParams', '$sce', 'UserService', 'RssService',
-   ($scope,   $rootScope,   $routeParams,   $sce,   UserService,   RssService) ->
+  ['$scope', '$rootScope', '$routeParams', 'UserService', 'RssService',
+   ($scope,   $rootScope,   $routeParams,   UserService,   RssService) ->
 
     UserService.login()
     $scope.activeFeed = {}
     $scope.activeLink = 0
 
     $scope.feedId =  $routeParams.feedId
-    $scope.parseHtml = (html) ->
-      $sce.trustAsHtml(html)
 
     $rootScope.$on "login", (e, user) ->
       $scope.user = user

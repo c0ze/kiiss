@@ -10,6 +10,17 @@ app.config( ($interpolateProvider) ->
   $interpolateProvider.endSymbol('}]')
 )
 
+app.config( ($qProvider) ->
+  $qProvider.errorOnUnhandledRejections(false)
+)
+
+app.filter('trusted',
+  ['$sce', ($sce) ->
+    return (html) ->
+      return $sce.trustAsHtml(html)
+  ]
+)
+
 app.config( ($routeProvider, $locationProvider) ->
   $routeProvider
     .when('/feed/:feedId', {

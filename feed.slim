@@ -14,5 +14,5 @@
         a[ng-href="{{link.link}}"]
           hr[ng-bind="link.contentSnippet"]
       .panel-collapse bs-collapse-target="" role="tabpanel"
-        .panel-body[ng-bind-html="parseHtml(link.content)"]
+        .panel-body[ng-bind-html="link.content | trusted"]
 
