@@ -1,15 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    aws-partitions (1.24.0)
-    aws-sdk-core (3.6.0)
+    aws-partitions (1.40.0)
+    aws-sdk-core (3.9.0)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.2.0)
+    aws-sdk-kms (1.3.0)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
-    aws-sdk-s3 (1.4.0)
+    aws-sdk-s3 (1.7.0)
       aws-sdk-core (~> 3)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)
@@ -24,6 +24,7 @@ GEM
       execjs
     coffee-script-source (1.11.1)
     colorator (0.1)
+    concurrent-ruby (1.0.5)
     dotenv (2.2.1)
     emblaze (0.2.0)
       aws-sdk-s3 (~> 1)
@@ -35,7 +36,8 @@ GEM
     ffi (1.9.18)
     hitimes (1.2.6)
     httpclient (2.8.3)
-    i18n (0.8.6)
+    i18n (0.9.1)
+      concurrent-ruby (~> 1.0)
     jekyll (2.0.1)
       classifier (~> 1.3)
       colorator (~> 0.1)
@@ -59,7 +61,7 @@ GEM
       sliq
     jmespath (1.3.1)
     json (2.1.0)
-    kramdown (1.15.0)
+    kramdown (1.16.1)
     libv8 (3.16.14.19)
     liquid (2.5.5)
     listen (2.10.1)
@@ -82,7 +84,7 @@ GEM
       smusher
     ref (2.0.0)
     safe_yaml (1.0.4)
-    sass (3.5.1)
+    sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
